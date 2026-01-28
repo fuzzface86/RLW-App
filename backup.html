@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backup &amp; Restore — RLW Express</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-inner">
+                <div class="header-title">
+                    <h1>💾 Backup &amp; Restore</h1>
+                    <p class="subtitle">Keep your data when using different devices</p>
+                </div>
+                <nav class="app-nav">
+                    <a href="index.html" class="nav-brand">🏠 RLW Express</a>
+                    <button type="button" class="nav-toggle" aria-label="Open menu">☰</button>
+                    <div class="nav-links">
+                        <a href="index.html">Home</a>
+                        <a href="inventory.html">📦 Inventory</a>
+                        <a href="pos.html">🛒 POS</a>
+                        <a href="events.html">📅 Events</a>
+                        <a href="sales-log.html">📊 Sales Log</a>
+                        <a href="event-discovery.html">🔍 Discover</a>
+                        <a href="analytics.html">📈 Analytics</a>
+                        <a href="backup.html" class="active">💾 Backup</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <div class="backup-intro">
+            <p>Your data (inventory, events, sales, discovery) is stored only in this device’s browser. To use the same data on another device (phone, tablet, computer):</p>
+            <ol>
+                <li><strong>On this device:</strong> click <strong>Download backup</strong> and save the file (e.g. to Drive or email).</li>
+                <li><strong>On the other device:</strong> open this site, go to Backup &amp; Restore, click <strong>Restore from file</strong>, and choose the backup file.</li>
+            </ol>
+        </div>
+
+        <div class="backup-actions">
+            <div class="backup-card">
+                <h3>Download backup</h3>
+                <p>Save a copy of all your data as a JSON file. Store it in Google Drive, Dropbox, or email it to yourself.</p>
+                <button type="button" id="downloadBackupBtn" class="btn btn-primary">Download backup</button>
+            </div>
+            <div class="backup-card">
+                <h3>Restore from file</h3>
+                <p>Load a previously saved backup. This replaces data on this device with the backup. Use after opening the site on a new device.</p>
+                <input type="file" id="restoreFileInput" accept=".json,application/json" style="display: none;">
+                <button type="button" id="restoreBackupBtn" class="btn btn-success">Restore from file</button>
+            </div>
+        </div>
+
+        <p class="backup-note">Backup includes: inventory, events, sales log, sale number, active event, Discover location and saved events.</p>
+    </div>
+
+    <script src="common.js"></script>
+    <script src="backup.js"></script>
+</body>
+</html>

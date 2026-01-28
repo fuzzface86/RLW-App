@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS Sales - Backstock Inventory</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pos-styles.css">
+</head>
+<body>
+    <div class="pos-container">
+        <header class="pos-header">
+            <div class="header-inner pos-header-inner">
+                <div class="header-left">
+                    <h1>🛒 Point of Sale</h1>
+                    <nav class="app-nav">
+                        <a href="index.html" class="nav-brand">🏠 RLW Express</a>
+                        <button type="button" class="nav-toggle" aria-label="Open menu">☰</button>
+                        <div class="nav-links">
+                            <a href="index.html">Home</a>
+                            <a href="inventory.html">📦 Inventory</a>
+                            <a href="pos.html" class="active">🛒 POS</a>
+                            <a href="events.html">📅 Events</a>
+                            <a href="sales-log.html">📊 Sales Log</a>
+                            <a href="event-discovery.html">🔍 Discover</a>
+                            <a href="analytics.html">📈 Analytics</a>
+                            <a href="backup.html">💾 Backup</a>
+                        </div>
+                    </nav>
+                </div>
+                <div class="header-right">
+                <div class="sale-info">
+                    <div class="event-selector" style="margin-bottom: 10px;">
+                        <label for="activeEventSelect" style="display: block; margin-bottom: 5px; font-size: 0.9rem; opacity: 0.9;">Event:</label>
+                        <select id="activeEventSelect" style="padding: 8px 12px; border-radius: 6px; border: 2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.2); color: white; font-size: 0.95rem; min-width: 200px;">
+                            <option value="">No Event Selected</option>
+                        </select>
+                    </div>
+                    <div class="sale-date" id="currentDate"></div>
+                    <div class="sale-number">Sale #<span id="saleNumber">1</span></div>
+                </div>
+            </div>
+        </header>
+
+        <div class="pos-layout">
+            <!-- Left Panel: Item Selection -->
+            <div class="item-panel">
+                <div class="panel-header">
+                    <h2>Items</h2>
+                    <div class="search-box">
+                        <input type="text" id="itemSearch" placeholder="Search items..." class="search-input-pos">
+                    </div>
+                </div>
+                
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-filter="">All</button>
+                    <button class="filter-tab" data-filter="low-stock">Low Stock</button>
+                </div>
+
+                <div class="items-grid" id="itemsGrid">
+                    <!-- Items will be populated here -->
+                </div>
+            </div>
+
+            <!-- Right Panel: Cart & Checkout -->
+            <div class="cart-panel">
+                <div class="cart-header">
+                    <h2>Cart</h2>
+                    <button id="clearCartBtn" class="btn-clear">Clear</button>
+                </div>
+
+                <div class="cart-items" id="cartItems">
+                    <div class="empty-cart">
+                        <p>Cart is empty</p>
+                        <p class="empty-cart-hint">Select items to add to cart</p>
+                    </div>
+                </div>
+
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span id="subtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Tax (0%):</span>
+                        <span id="tax">$0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span id="total">$0.00</span>
+                    </div>
+                    <div class="summary-row items-count">
+                        <span>Items:</span>
+                        <span id="itemsCount">0</span>
+                    </div>
+                </div>
+
+                <div class="checkout-actions">
+                    <button id="checkoutBtn" class="btn-checkout" disabled>
+                        Complete Sale
+                    </button>
+                    <button id="printReceiptBtn" class="btn-secondary-pos" disabled>
+                        Print Receipt
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Receipt Modal -->
+    <div id="receiptModal" class="modal">
+        <div class="modal-content receipt-modal">
+            <div class="modal-header">
+                <h2>Receipt</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="receipt-content" id="receiptContent">
+                <!-- Receipt will be generated here -->
+            </div>
+            <div class="receipt-actions">
+                <button id="printReceiptFinalBtn" class="btn btn-primary">Print Receipt</button>
+                <button id="closeReceiptBtn" class="btn btn-secondary">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+    <script src="pos.js"></script>
+</body>
+</html>

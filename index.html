@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RLW Express — Vendor Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-inner">
+                <div class="header-title">
+                    <h1>🏠 RLW Express</h1>
+                    <p class="subtitle">Vendor Hub</p>
+                </div>
+                <nav class="app-nav">
+                    <a href="index.html" class="nav-brand">🏠 RLW Express</a>
+                    <button type="button" class="nav-toggle" aria-label="Open menu">☰</button>
+                    <div class="nav-links">
+                        <a href="index.html" class="active">Home</a>
+                        <a href="inventory.html">📦 Inventory</a>
+                        <a href="pos.html">🛒 POS</a>
+                        <a href="events.html">📅 Events</a>
+                        <a href="sales-log.html">📊 Sales Log</a>
+                        <a href="event-discovery.html">🔍 Discover</a>
+                        <a href="analytics.html">📈 Analytics</a>
+                        <a href="backup.html">💾 Backup</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <div class="dashboard-grid" id="dashboardGrid">
+            <a href="inventory.html" class="dashboard-card">
+                <span class="dashboard-card-icon">📦</span>
+                <h3>Inventory</h3>
+                <div class="dashboard-card-value" id="dashboard-inventory-value">0 items</div>
+                <div class="dashboard-card-meta" id="dashboard-inventory-meta">Total value $0.00</div>
+                <div class="dashboard-card-cta">Manage backstock →</div>
+            </a>
+            <a href="pos.html" class="dashboard-card">
+                <span class="dashboard-card-icon">🛒</span>
+                <h3>Point of Sale</h3>
+                <div class="dashboard-card-value" id="dashboard-pos-value">No event selected</div>
+                <div class="dashboard-card-meta" id="dashboard-pos-meta">Tap to start selling</div>
+                <div class="dashboard-card-cta">Open POS →</div>
+            </a>
+            <a href="events.html" class="dashboard-card">
+                <span class="dashboard-card-icon">📅</span>
+                <h3>Events</h3>
+                <div class="dashboard-card-value" id="dashboard-events-value">0 upcoming</div>
+                <div class="dashboard-card-meta" id="dashboard-events-meta">0 total events</div>
+                <div class="dashboard-card-cta">Manage events →</div>
+            </a>
+            <a href="sales-log.html" class="dashboard-card">
+                <span class="dashboard-card-icon">📊</span>
+                <h3>Sales Log</h3>
+                <div class="dashboard-card-value" id="dashboard-sales-value">$0.00</div>
+                <div class="dashboard-card-meta" id="dashboard-sales-meta">0 transactions</div>
+                <div class="dashboard-card-cta">View all sales →</div>
+            </a>
+            <a href="event-discovery.html" class="dashboard-card">
+                <span class="dashboard-card-icon">🔍</span>
+                <h3>Discover</h3>
+                <div class="dashboard-card-value" id="dashboard-discover-value">Find events</div>
+                <div class="dashboard-card-meta" id="dashboard-discover-meta">Search by location</div>
+                <div class="dashboard-card-cta">Search events →</div>
+            </a>
+            <a href="analytics.html" class="dashboard-card">
+                <span class="dashboard-card-icon">📈</span>
+                <h3>Analytics</h3>
+                <div class="dashboard-card-value" id="dashboard-analytics-value">$0.00</div>
+                <div class="dashboard-card-meta" id="dashboard-analytics-meta">Revenue &amp; insights</div>
+                <div class="dashboard-card-cta">View insights →</div>
+            </a>
+            <a href="backup.html" class="dashboard-card">
+                <span class="dashboard-card-icon">💾</span>
+                <h3>Backup &amp; Restore</h3>
+                <div class="dashboard-card-value">Sync across devices</div>
+                <div class="dashboard-card-meta">Download or restore your data</div>
+                <div class="dashboard-card-cta">Backup &amp; Restore →</div>
+            </a>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+    <script src="home.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "backstock-inventory-management",
+  "version": "1.0.0",
+  "description": "Backstock Inventory Management System for Event POS",
+  "main": "index.html",
+  "scripts": {
+    "build:gh-pages": "npm run copy-files",
+    "copy-files": "node scripts/copy-files.js"
+  },
+  "keywords": [
+    "inventory",
+    "management",
+    "backstock",
+    "pos"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "fs-extra": "^11.1.1"
+  }
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Log - Backstock Inventory</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-inner">
+                <div class="header-title">
+                    <h1>📊 Sales Log</h1>
+                    <p class="subtitle">View and track all sales</p>
+                </div>
+                <nav class="app-nav">
+                    <a href="index.html" class="nav-brand">🏠 RLW Express</a>
+                    <button type="button" class="nav-toggle" aria-label="Open menu">☰</button>
+                    <div class="nav-links">
+                        <a href="index.html">Home</a>
+                        <a href="inventory.html">📦 Inventory</a>
+                        <a href="pos.html">🛒 POS</a>
+                        <a href="events.html">📅 Events</a>
+                        <a href="sales-log.html" class="active">📊 Sales Log</a>
+                        <a href="event-discovery.html">🔍 Discover</a>
+                        <a href="analytics.html">📈 Analytics</a>
+                        <a href="backup.html">💾 Backup</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <div class="toolbar">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search sales..." class="search-input">
+            </div>
+            <div class="filters">
+                <select id="eventFilter" class="filter-select">
+                    <option value="">All Events</option>
+                </select>
+                <input type="date" id="dateFromFilter" class="filter-select">
+                <input type="date" id="dateToFilter" class="filter-select">
+                <button id="clearFilters" class="btn btn-secondary">Clear Filters</button>
+            </div>
+            <div class="toolbar-actions">
+                <button id="exportSalesBtn" class="btn btn-success">📥 Export CSV</button>
+            </div>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="stat-label">Total Sales</div>
+                <div class="stat-value" id="totalSalesCount">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Revenue</div>
+                <div class="stat-value" id="totalRevenue">$0.00</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Today's Sales</div>
+                <div class="stat-value" id="todaySales">$0.00</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Average Sale</div>
+                <div class="stat-value" id="averageSale">$0.00</div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="salesTable">
+                <thead>
+                    <tr>
+                        <th>Sale #</th>
+                        <th>Date & Time</th>
+                        <th>Event</th>
+                        <th>Items</th>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="salesTableBody">
+                    <tr class="empty-state">
+                        <td colspan="7">
+                            <div class="empty-message">
+                                <p>No sales found.</p>
+                                <p>Sales will appear here after completing transactions in the POS.</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Sale Details Modal -->
+    <div id="saleModal" class="modal">
+        <div class="modal-content" style="max-width: 700px;">
+            <div class="modal-header">
+                <h2>Sale Details</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body" id="saleDetailsContent">
+                <!-- Sale details will be populated here -->
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-danger" id="reverseSaleFromModalBtn">Reverse Sale</button>
+                <button type="button" class="btn btn-secondary" id="closeSaleModalBtn">Close</button>
+                <button type="button" class="btn btn-primary" id="printSaleBtn">Print Receipt</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reverse Sale Confirmation Modal -->
+    <div id="reverseSaleModal" class="modal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h2>Reverse Sale</h2>
+                <span class="close reverse-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p><strong>Are you sure you want to reverse this sale?</strong></p>
+                <p>This will:</p>
+                <ul style="margin: 15px 0; padding-left: 20px;">
+                    <li>Restore inventory quantities for all items in this sale</li>
+                    <li>Remove this sale from the sales log</li>
+                    <li>Update event statistics</li>
+                </ul>
+                <div id="reverseSaleInfo" style="background: #f8fafc; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                    <!-- Sale info will be populated here -->
+                </div>
+                <p style="margin-top: 15px; color: var(--danger-color); font-weight: 600;">This action cannot be undone.</p>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" id="cancelReverseBtn">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmReverseBtn">Reverse Sale</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+    <script src="sales-log.js"></script>
+</body>
+</html>

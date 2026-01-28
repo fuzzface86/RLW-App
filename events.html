@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - Backstock Inventory</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-inner">
+                <div class="header-title">
+                    <h1>📅 Event Management</h1>
+                    <p class="subtitle">Track events and sales</p>
+                </div>
+                <nav class="app-nav">
+                    <a href="index.html" class="nav-brand">🏠 RLW Express</a>
+                    <button type="button" class="nav-toggle" aria-label="Open menu">☰</button>
+                    <div class="nav-links">
+                        <a href="index.html">Home</a>
+                        <a href="inventory.html">📦 Inventory</a>
+                        <a href="pos.html">🛒 POS</a>
+                        <a href="events.html" class="active">📅 Events</a>
+                        <a href="sales-log.html">📊 Sales Log</a>
+                        <a href="event-discovery.html">🔍 Discover</a>
+                        <a href="analytics.html">📈 Analytics</a>
+                        <a href="backup.html">💾 Backup</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <div class="toolbar">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search events..." class="search-input">
+            </div>
+            <div class="toolbar-actions">
+                <button id="addEventBtn" class="btn btn-primary">+ Add Event</button>
+            </div>
+        </div>
+
+        <div class="stats-bar">
+            <div class="stat-card">
+                <div class="stat-label">Total Events</div>
+                <div class="stat-value" id="totalEvents">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Upcoming Events</div>
+                <div class="stat-value" id="upcomingEvents">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total Sales</div>
+                <div class="stat-value" id="totalSales">$0.00</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Active Event</div>
+                <div class="stat-value" id="activeEvent">None</div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="eventsTable">
+                <thead>
+                    <tr>
+                        <th>Event Name</th>
+                        <th>Date</th>
+                        <th>Location</th>
+                        <th>Days</th>
+                        <th>Table Cost</th>
+                        <th>Total Sales</th>
+                        <th>Net Profit</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="eventsTableBody">
+                    <tr class="empty-state">
+                        <td colspan="9">
+                            <div class="empty-message">
+                                <p>No events found.</p>
+                                <p>Click "Add Event" to get started.</p>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Add/Edit Event Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add New Event</h2>
+                <span class="close">&times;</span>
+            </div>
+            <form id="eventForm">
+                <div class="form-group">
+                    <label for="eventName">Event Name *</label>
+                    <input type="text" id="eventName" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="eventDate">Start Date *</label>
+                        <input type="date" id="eventDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventEndDate">End Date</label>
+                        <input type="date" id="eventEndDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="eventDays">Number of Days</label>
+                        <input type="number" id="eventDays" min="1" value="1">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="eventLocation">Location</label>
+                    <input type="text" id="eventLocation" placeholder="e.g., Comic Con, San Diego">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tableCost">Table Cost ($)</label>
+                        <input type="number" id="tableCost" min="0" step="0.01" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="otherCosts">Other Costs ($)</label>
+                        <input type="number" id="otherCosts" min="0" step="0.01" value="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="eventDescription">Description / Notes</label>
+                    <textarea id="eventDescription" rows="4" placeholder="Additional details about the event..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Set Active Event Modal -->
+    <div id="activeEventModal" class="modal">
+        <div class="modal-content modal-small">
+            <div class="modal-header">
+                <h2>Set Active Event</h2>
+                <span class="close active-close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Set this event as active? All new sales will be associated with this event.</p>
+                <p class="event-name-display"></p>
+            </div>
+            <div class="form-actions">
+                <button type="button" class="btn btn-secondary" id="cancelActiveBtn">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirmActiveBtn">Set Active</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="common.js"></script>
+    <script src="events.js"></script>
+</body>
+</html>
